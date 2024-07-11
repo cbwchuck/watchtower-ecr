@@ -1,0 +1,11 @@
+services:
+  watchtower:
+    image: watchtower-ecr:latest
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - ~/.docker/config.json:/config.json
+    environment:
+      # AWS credentials used for AWS ECR
+      AWS_ACCESS_KEY_ID:
+      AWS_SECRET_ACCESS_KEY:
+    command: --interval 30 --cleanup
